@@ -324,6 +324,7 @@ var mediaTypeNames = map[*regexp.Regexp]string{
 	regexp.MustCompile("application/.*protobuf"):     "protobuf",
 	regexp.MustCompile("application/.*capnproto"):    "capnproto",
 	regexp.MustCompile("application/.*thrift"):       "thrift",
+	regexp.MustCompile("application/.*gob"):          "gob",
 	regexp.MustCompile("(?:application|text)/.*xml"): "xml",
 	regexp.MustCompile("text/.*markdown"):            "markdown",
 	regexp.MustCompile("text/.*html"):                "html",
@@ -339,12 +340,14 @@ var knownProducers = map[string]string{
 	"json": "httpkit.JSONProducer",
 	"yaml": "httpkit.YAMLProducer",
 	"bin":  "httpkit.ByteStreamProducer",
+	"gob":  "httpkit.GobProducer",
 }
 
 var knownConsumers = map[string]string{
 	"json": "httpkit.JSONConsumer",
 	"yaml": "httpkit.YAMLConsumer",
 	"bin":  "httpkit.ByteStreamConsumer",
+	"gob":  "httpkit.GobConsumer",
 }
 
 func getSerializer(sers []GenSerGroup, ext string) (*GenSerGroup, bool) {
